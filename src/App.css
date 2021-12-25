@@ -1,38 +1,123 @@
-.App {
-  text-align: center;
+.main {
+  position: relative;
+  height: 45rem;
+  width: 60rem;
+  margin: auto;
+  background-color: white;
+  overflow-y: scroll;
+  border: 1px solid rgb(220, 217, 217);
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  border-top: none;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+h1 {
+  font-weight: 10000;
+  font-size: 50px;
+  margin: 10px 0px;
+}
+p {
+  margin: 5px 0;
+  font-weight: bold;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+img {
+  width: 150px;
+  height: 150px;
+  margin-left: 30px;
+  image-resolution: 50px;
+  border-radius: 50%;
+  border: 1px solid;
+  border-color: rgb(220, 217, 217);
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.container {
+  position: relative;
+}
+
+.student-card {
   display: flex;
   flex-direction: column;
+  border-bottom: 0.5px solid;
+  border-color: rgb(220, 217, 217);
+  padding: 15px 0;
+}
+
+.student-sub-card {
+  display: flex;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  gap: 30px;
 }
 
-.App-link {
-  color: #61dafb;
+.search-input {
+  width: 100%;
+  z-index: 20;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.search-input input {
+  width: 100%;
+  padding: 20px;
+  outline: none;
+  border: 1px solid rgb(220, 217, 217);
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  font-size: medium;
+}
+
+.tag-input {
+  width: 20%;
+  padding-bottom: 10px;
+  outline: none;
+  border: none;
+  border-bottom: 1px solid black;
+  font-size: medium;
+}
+
+.tag {
+  padding-left: 240px;
+}
+
+.tag ul li {
+  list-style: none;
+  background-color: whitesmoke;
+  width: auto;
+  margin: 0;
+  padding: 10px;
+  font-weight: bold;
+}
+
+.tag ul {
+  display: flex;
+  gap: 15px;
+  padding: 0;
+}
+
+.score {
+  padding-left: 20px;
+}
+
+.test {
+  padding-top: 20px;
+  padding-left: 240px;
+}
+.button {
+  position: absolute;
+  top: 2%;
+  right: 1%;
+  padding: 0%;
+  color: rgb(220, 217, 217);
+  font-size: 50px;
+  background-color: inherit;
+  border: none;
+  cursor: pointer;
+}
+.test-close {
+  display: none;
+}
+
+.details {
+  display: flex;
+}
+.button:hover {
+  color: rgb(87, 85, 85);
 }
