@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 import './App.css';
 import StudentCard from './Components/StudentCard';
 import SearchInput from './Components/SearchInput';
+import SearchTag from './Components/SearchTag';
 
 function App() {
   const [data, setData] = useState([]);
@@ -26,9 +27,12 @@ function App() {
     }
   };
 
+  const searchTags = (tagValue) => {};
+
   return (
     <>
       <SearchInput searchItems={searchItems} />
+      <SearchTag searchTags={searchTags} />
       <div className="main">
         <div>
           {input.length > 1

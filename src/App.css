@@ -54,6 +54,11 @@ img {
   z-index: 20;
 }
 
+.search-tag {
+  width: 100%;
+  z-index: 20;
+}
+
 .search-input input {
   width: 100%;
   padding: 20px;
@@ -61,6 +66,15 @@ img {
   border: 1px solid rgb(220, 217, 217);
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
+  font-size: medium;
+}
+
+.search-tag input {
+  width: 100%;
+  padding: 20px;
+  outline: none;
+  border: 1px solid rgb(220, 217, 217);
+  border-top: none;
   font-size: medium;
 }
 
