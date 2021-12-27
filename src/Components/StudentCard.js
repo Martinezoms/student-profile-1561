@@ -2,9 +2,21 @@ import { useState } from 'react';
 import { average } from '../Modules/module';
 import '../App.css';
 
-export default function StudentCard({ firstName, lastName, pic, email, company, skill, grades }) {
+export default function StudentCard({
+  id,
+  firstName,
+  lastName,
+  pic,
+  email,
+  company,
+  skill,
+  grades,
+  students,
+  tags,
+  setData
+}) {
   const [open, setOpen] = useState(false);
-  const [tags, setTags] = useState([]);
+
   const [tagInput, setTagInput] = useState('');
 
   const toggleBtn = () => {
@@ -17,8 +29,13 @@ export default function StudentCard({ firstName, lastName, pic, email, company, 
 
   const addTagHandler = (e) => {
     e.preventDefault();
-    if (tagInput === '') return;
-    setTags([...tags, tagInput]);
+    const newStudents = students.map((student) => {
+      if (student.id === id && tagInput !== '') {
+        student.tags = [...student.tags, tagInput];
+      }
+      return student;
+    });
+    setData(newStudents);
     setTagInput('');
   };
 

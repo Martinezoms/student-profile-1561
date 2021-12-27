@@ -7,19 +7,23 @@ import SearchTag from './Components/SearchTag';
 
 function App() {
   const [data, setData] = useState([]);
-  const [input, setInput] = useState('');
+  const [nameSearchInput, setNameSearchInput] = useState('');
+  const [tagSearchInput, setTagSearchInput] = useState('');
   const [filteredResult, setFilteredResult] = useState([]);
+  const [filteredTagResult, setFilteredTagResult] = useState([]);
 
   useEffect(() => {
-    getData().then((data) => setData(data.students));
+    getData().then((data) => {
+      data.students.map((student) => (student.tags = []));
+      setData(data.students);
+    });
   }, []);
 
   const searchItems = (searchValue) => {
-    setInput(searchValue);
-    if (input !== '') {
+    if (searchValue !== '') {
       const filteredData = data.filter((student) => {
         const name = student.firstName + student.lastName;
-        return name.toLowerCase().includes(input.toLowerCase());
+        return name.toLowerCase().includes(searchValue.toLowerCase());
       });
       setFilteredResult(filteredData);
     } else {
@@ -27,23 +31,47 @@ function App() {
     }
   };
 
-  const searchTags = (tagValue) => {};
+  const searchTags = (tagValue) => {
+    if (tagValue !== '') {
+      const filteredTag = [];
+
+      // eslint-disable-next-line array-callback-return
+      data.filter((student) => {
+        // eslint-disable-next-line array-callback-return
+        student.tags.map((tag) => {
+          if (tag.toLowerCase().includes(tagValue.toLowerCase())) {
+            filteredTag.push(student);
+          }
+        });
+      });
+
+      setFilteredTagResult(filteredTag);
+    } else {
+      setFilteredTagResult(data);
+    }
+  };
 
   return (
     <>
-      <SearchInput searchItems={searchItems} />
-      <SearchTag searchTags={searchTags} />
+      <SearchInput searchItems={searchItems} setNameSearchInput={setNameSearchInput} />
+      <SearchTag searchTags={searchTags} setTagSearchInput={setTagSearchInput} />
       <div className="main">
         <div>
-          {input.length > 1
+          {nameSearchInput.length > 0
             ? filteredResult.map((student) => (
                 <div>
-                  <StudentCard key={student.id} {...student} />
+                  <StudentCard key={student.id} {...student} students={data} setData={setData} />
+                </div>
+              ))
+            : tagSearchInput.length > 0
+            ? filteredTagResult.map((student) => (
+                <div>
+                  <StudentCard key={student.id} {...student} students={data} setData={setData} />
                 </div>
               ))
             : data.map((student) => (
                 <div>
-                  <StudentCard key={student.id} {...student} />
+                  <StudentCard key={student.id} {...student} students={data} setData={setData} />
                 </div>
               ))}
         </div>
