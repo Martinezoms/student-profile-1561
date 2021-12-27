@@ -30,7 +30,7 @@ export default function StudentCard({
   const addTagHandler = (e) => {
     e.preventDefault();
     const newStudents = students.map((student) => {
-      if (student.id === id && tagInput !== '') {
+      if (student.id === id && tagInput !== '' && !student.tags.includes(tagInput)) {
         student.tags = [...student.tags, tagInput];
       }
       return student;
